@@ -1,0 +1,26 @@
+# node_modules
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# built files
+dist/
+
+# some broken files
+*.swp
+
+# Mac OS configure file
+.DS_Store
+
+# idea configure directory
+.idea/
+
+# vscode configure directory
+.vscode/
+
+# Webpack stats file
+stats.json
