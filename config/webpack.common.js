@@ -1,5 +1,4 @@
-const path = require('path');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const config = require('./config');
 const { resolve } = require('./utils');
 module.exports = {
@@ -13,7 +12,7 @@ module.exports = {
     path: resolve(config.prod.outputPath),
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx',],
   },
   module: {
     rules: [
@@ -23,7 +22,7 @@ module.exports = {
           // 'react-hot-loader/webpack',
           'babel-loader'
         ],
-        include: path.join(__dirname, '..', 'src'),
+        include: resolve('src'),
         exclude: /node_modules/
       },
       {
@@ -47,10 +46,14 @@ module.exports = {
             outputPath: 'static/fonts/'
           }
         }
-      }
+      },
     ],
   },
-  plugins: {
-    
-  }
+  plugins: [
+    new CopyWebpackPlugin([{
+      from: resolve('static'),
+      to: resolve(config.prod.outputPath, 'static'),
+      ignore: ['.*'],
+    }]),
+  ],
 };
