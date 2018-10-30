@@ -21,6 +21,3 @@ dist/
 
 # vscode configure directory
 .vscode/
-
-# Webpack stats file
-stats.json
