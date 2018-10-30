@@ -1,7 +1,7 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const config = require('./config');
+const { resolve } = require('./utils');
 module.exports = {
   entry: {
     app: [
@@ -10,15 +10,8 @@ module.exports = {
     ],
   },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: resolve(config.prod.outputPath),
   },
-  plugins: [
-    new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      title: '123123'
-    }),
-  ],
   resolve: {
     extentions: ['.js', '.jsx'],
   },
@@ -26,7 +19,10 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: ['react-host-loader', 'babel-loader'],
+        use: [
+          'react-hot-loader',
+          'babel-loader'
+        ],
         include: path.join(__dirname, '..', 'src'),
         exclude: /node_modules/
       },
@@ -54,4 +50,7 @@ module.exports = {
       }
     ],
   },
+  plugin: {
+
+  }
 };
