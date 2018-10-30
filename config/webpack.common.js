@@ -13,14 +13,14 @@ module.exports = {
     path: resolve(config.prod.outputPath),
   },
   resolve: {
-    extentions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         use: [
-          'react-hot-loader',
+          // 'react-hot-loader/webpack',
           'babel-loader'
         ],
         include: path.join(__dirname, '..', 'src'),
@@ -50,7 +50,7 @@ module.exports = {
       }
     ],
   },
-  plugin: {
+  plugins: {
 
   }
 };
